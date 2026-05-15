@@ -12,7 +12,7 @@ __pycache__/
 data/raw/img/
 
 # Model weights
-models/
+
 
 # Embeddings
 embeddings/
