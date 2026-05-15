@@ -3,8 +3,8 @@
 ## 1. Clone the Repository
 
 ```bash
-git clone <your-repo-link>
-cd <repo-name>
+git clone https://github.com/AsutoshAssignment/VR_visual_search
+cd VR_visual_search
 ```
 
 ## 2. Download the `report` Folder
