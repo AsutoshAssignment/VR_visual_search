@@ -20,7 +20,7 @@ Move the downloaded `report` folder into the root directory of the cloned reposi
 Expected structure:
 
 ```text
-project-root/
+VR_visual_search/
 │
 ├── report/
 ├── streamlit_app/
