@@ -1,0 +1,50 @@
+2026-05-15 12:19:58.980 No ASGI app assignments found in /home/asutosh/Projects/visual-product-search/streamlit_app/app.py
+2026-05-15 12:19:59.745 Filtered 180 packages down to 2 candidates for component scanning
+2026-05-15 12:19:59.745 Scanning 2 candidate packages for component manifests using 2 worker threads
+2026-05-15 12:19:59.888 Found 0 component manifests total
+2026-05-15 12:19:59.889 No asset roots to watch
+2026-05-15 12:19:59.889 File watching not started
+2026-05-15 12:19:59.889 Starting new event loop for server
+2026-05-15 12:19:59.891 Starting server...
+2026-05-15 12:19:59.983 Starting uvicorn server on 0.0.0.0:8501
+2026-05-15 12:20:00.058 Runtime state: RuntimeState.INITIAL -> RuntimeState.NO_SESSIONS_CONNECTED
+2026-05-15 12:20:00.059 Uvicorn server started on 0.0.0.0:8501
+
+  You can now view your Streamlit app in your browser.
+
+  Local URL: http://localhost:8501
+  Network URL: http://100.128.165.77:8501
+
+2026-05-15 12:20:00.072 Setting up signal handler
+2026-05-15 12:20:02.194 No singleton. Registering one.
+2026-05-15 12:20:02.200 Watcher created for /home/asutosh/Projects/visual-product-search/streamlit_app/app.py
+2026-05-15 12:20:02.203 AppSession initialized (id=8f9d821d-861d-4f10-a6cf-e94ae6206550)
+2026-05-15 12:20:02.203 Created new session for client 140032663254896. Session ID: 8f9d821d-861d-4f10-a6cf-e94ae6206550
+2026-05-15 12:20:02.204 Runtime state: RuntimeState.NO_SESSIONS_CONNECTED -> RuntimeState.ONE_OR_MORE_SESSIONS_CONNECTED
+2026-05-15 12:20:02.241 Beginning script thread
+2026-05-15 12:20:02.241 Running script
+2026-05-15 12:20:02.241 Disconnecting files for session with ID 8f9d821d-861d-4f10-a6cf-e94ae6206550
+2026-05-15 12:20:02.242 Sessions still active: dict_keys([])
+2026-05-15 12:20:02.242 Files: 0; Sessions with files: 0
+2026-05-15 12:20:18.836 Creating new ResourceCache (key=0c668e86b7cbbe9c4b9b673856ef2af0)
+2026-05-15 12:20:18.837 Cache key: cae66941d9efbd404e4d88758ea67670
+  Stopping...
+2026-05-15 12:20:27.293 Runtime state: RuntimeState.ONE_OR_MORE_SESSIONS_CONNECTED -> RuntimeState.NO_SESSIONS_CONNECTED
+2026-05-15 12:20:27.341 Runtime stopping...
+2026-05-15 12:20:27.342 Runtime state: RuntimeState.NO_SESSIONS_CONNECTED -> RuntimeState.STOPPING
+2026-05-15 12:20:27.353 Shutting down (id=8f9d821d-861d-4f10-a6cf-e94ae6206550)
+2026-05-15 12:20:27.353 Disconnecting files for session with ID 8f9d821d-861d-4f10-a6cf-e94ae6206550
+2026-05-15 12:20:27.353 Sessions still active: dict_keys([])
+2026-05-15 12:20:27.355 Files: 0; Sessions with files: 0
+2026-05-15 12:20:27.355 Removing orphaned files...
+2026-05-15 12:20:27.355 Removing orphaned deferred callables...
+2026-05-15 12:20:27.355 Runtime state: RuntimeState.STOPPING -> RuntimeState.STOPPED
+2026-05-15 12:20:32.159 Creating new ResourceCache (key=3d19aefb74bacd2c610b0ae0d05341d2)
+2026-05-15 12:20:32.160 Cache key: cae66941d9efbd404e4d88758ea67670
+2026-05-15 12:20:32.199 Creating new ResourceCache (key=cd59d37f39e66da7a173212a048309ba)
+2026-05-15 12:20:32.200 Cache key: cae66941d9efbd404e4d88758ea67670
+2026-05-15 12:20:32.335 Creating new ResourceCache (key=7c84e9f03a41e6ab2e32b6d161b6f0f9)
+2026-05-15 12:20:32.336 Cache key: cae66941d9efbd404e4d88758ea67670
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-05-15 12:20:39.388 Removing orphaned files...
+2026-05-15 12:20:39.388 Removing orphaned deferred callables...

@@ -1,0 +1,38 @@
+# Virtual environment
+venv/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Dataset
+data/raw/img/
+
+# Model weights
+models/
+
+# Embeddings
+embeddings/
+
+# FAISS indexes
+*.index
+
+# NumPy arrays
+*.npy
+
+# Logs
+logs/
+
+# MacOS
+.DS_Store
+
+# VSCode settings
+.vscode/
+
+# Streamlit cache
+.streamlit/secrets.toml
+
+results/experiment_C/clip_visual_finetuned.pth
