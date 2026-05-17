@@ -9,24 +9,46 @@ cd VR_visual_search
 
 ## 2. Download the `report` Folder
 
-Download the `report` folder from the following Google Drive link:
+Download the clip_fine_tune file from the following Google Drive link:
 
-https://drive.google.com/drive/u/0/folders/1Wa8gpdcKxBOwjH1TEqf0S29j92dWlZGQ
+https://drive.google.com/file/d/1s1a--6uAmNNTOLEKJF2L2Buq2WB5qdz4/view?usp=sharing
 
 ## 3. Place the Folder
 
-Move the downloaded `report` folder into the root directory of the cloned repository.
+Move the downloaded file into the result/experiment_C directory of the cloned repository.
 
 Expected structure:
 
 ```text
 VR_visual_search/
 │
-├── report/
+├── results/experiment_C/clip_visual_finetuned.pth
 ├── streamlit_app/
 ├── requirements.txt
 └── ...
 ```
+
+
+## BONUS. If you want all the image suggestion to be if the same dimensions :
+Download the "raw" folder from the following Google Drive link:
+
+https://drive.google.com/drive/folders/1Dk-p0ov6jb-RUETjkoTg9b97Dxs2KA33?usp=sharing
+
+## Place the Folder
+
+Move the downloaded folder into the data folder of the cloned repository.
+
+Expected structure:
+
+```text
+VR_visual_search/
+│
+├── data/raw/
+├── streamlit_app/
+├── requirements.txt
+└── ...
+```
+
 
 ## 4. Create and Activate a Virtual Environment
 
