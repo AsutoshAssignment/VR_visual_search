@@ -310,21 +310,19 @@ def detect_clothing(image_pil: Image.Image, yolo_model) -> list[dict]:
         # =================================================
 
         large_detection = (
-            bh > 0.55 * H or
-            bw > 0.45 * W
-        )
+                bh > 0.75 * H or
+                bw > 0.60 * W
+            )
 
-        # =================================================
-        # HYBRID SPLIT MODE
-        # Only when YOLO did NOT already find
-        # multiple garment detections
-        # =================================================
+        single_dominant_detection = (
+                total_boxes == 1
+            )
 
-        if large_detection and total_boxes <= 2:
+        if large_detection and single_dominant_detection:
 
-            upper_y2 = y1 + int(bh * 0.55)
+            upper_y2 = y1 + int(bh * 0.52)
 
-            lower_y1 = y1 + int(bh * 0.45)
+            lower_y1 = y1 + int(bh * 0.58)
 
             upper_box = [
                 x1,
@@ -858,13 +856,108 @@ with left:
                     st.session_state["caption"] = caption
 
                 with st.spinner("Embedding & retrieving…"):
-                    q_emb           = embed_query(crop, caption, clip_model, clip_preprocess)
-                    cand_idx, dists = retrieve(q_emb, faiss_index)
+
+                    selected_label = chosen["label"].lower()
+
+                    upper_categories = {
+                        "shirts_polos",
+                        "sweaters",
+                        "sweatshirts_hoodies",
+                        "tees_tanks",
+                        "blouses_shirts",
+                        "cardigans",
+                        "tops",
+                        "jackets_coats",
+                        "jackets_vests",
+                        "graphic_tees",
+                    }
+
+                    lower_categories = {
+                        "pants",
+                        "shorts",
+                        "skirts",
+                        "leggings",
+                        "denim",
+                    }
+
+                    # =====================================================
+                    # FILTER GALLERY
+                    # =====================================================
+
+                    if selected_label == "upper body":
+
+                        filtered_gallery = gallery_df[
+                            gallery_df["clothing_label"]
+                            .str.lower()
+                            .isin(upper_categories)
+                        ]
+
+                    elif selected_label == "lower body":
+
+                        filtered_gallery = gallery_df[
+                            gallery_df["clothing_label"]
+                            .str.lower()
+                            .isin(lower_categories)
+                        ]
+
+                    else:
+
+                        filtered_gallery = gallery_df.copy()
+
+                    # =====================================================
+                    # EMBEDDING
+                    # =====================================================
+
+                    q_emb = embed_query(
+                        crop,
+                        caption,
+                        clip_model,
+                        clip_preprocess,
+                    )
+
+                    # =====================================================
+                    # TEMP FAISS INDEX
+                    # =====================================================
+
+                    gallery_embs = np.load(
+                        EXP_C_DIR / "gallery_embeddings.npy"
+                    )
+
+                    valid_indices = filtered_gallery.index.to_numpy()
+
+                    filtered_embs = gallery_embs[
+                        valid_indices
+                    ].astype("float32")
+
+                    faiss.normalize_L2(filtered_embs)
+
+                    temp_index = faiss.IndexFlatIP(
+                        filtered_embs.shape[1]
+                    )
+
+                    temp_index.add(filtered_embs)
+
+                    D, I = temp_index.search(
+                        q_emb,
+                        TOP_K,
+                    )
+
+                    retrieved_rows = filtered_gallery.iloc[
+                        I[0]
+                    ].reset_index(drop=True)
+
+                    cand_idx = np.arange(len(retrieved_rows))
+
+                    dists = D[0]
 
                 with st.spinner("Re-ranking with BLIP ITM…"):
                     reranked, raw = itm_rerank(
-                        crop, cand_idx, dists,
-                        gallery_df, itm_proc, itm_model_obj,
+                        crop,
+                        cand_idx,
+                        dists,
+                        retrieved_rows,
+                        itm_proc,
+                        itm_model_obj,
                     )
 
                 st.session_state.update({
