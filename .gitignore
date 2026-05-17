@@ -18,10 +18,9 @@ data/raw/img/
 embeddings/
 
 # FAISS indexes
-*.index
+
 
 # NumPy arrays
-*.npy
 
 # Logs
 logs/
